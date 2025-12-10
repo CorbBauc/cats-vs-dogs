@@ -18,10 +18,26 @@ namespace CSC260_FinalProject_WinForm
         }
 
 
-
         private void startScreenButton_Click(object sender, EventArgs e)
         {
             ((MainForm)this.FindForm()).ShowStartScreen();
+        }
+
+        public void DisplayCard(Card card)
+        {
+            if (card == null) return;
+
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

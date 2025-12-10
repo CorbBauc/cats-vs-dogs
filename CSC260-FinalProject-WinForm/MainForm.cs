@@ -23,6 +23,7 @@ namespace CSC260_FinalProject_WinForm
 
         public void ShowGameScreen()
         {
+            TankDog td = new TankDog();
             LoadScreen(game);
         }
 
