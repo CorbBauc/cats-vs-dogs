@@ -3,12 +3,14 @@ namespace CSC260_FinalProject_WinForm
     public partial class MainForm : Form
     {
         StartScreen start;
+        SetupScreen setup;
         GameScreen game;
         public MainForm()
         {
             InitializeComponent();
 
             start = new StartScreen();
+            setup = new SetupScreen();
             game = new GameScreen();
 
             LoadScreen(start);
@@ -21,15 +23,20 @@ namespace CSC260_FinalProject_WinForm
             mainPanel.Controls.Add(screen);
         }
 
-        public void ShowGameScreen()
-        {
-            TankDog td = new TankDog();
-            LoadScreen(game);
-        }
-
         public void ShowStartScreen()
         {
             LoadScreen(start);
+        }
+
+        public void ShowSetupScreen()
+        {
+
+            LoadScreen(setup);
+        }
+        public void ShowGameScreen()
+        {
+
+            LoadScreen(game);
         }
     }
 }
