@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CSC260_FinalProject_WinForm
 {
-    public abstract class Dog : Card
+    public class Dog : Card
     {
-        public Dog(int health, int damage, int manaCost ) 
-            : base(health, damage, manaCost)
+        public Dog(string cardName, int health, int damage, int manaCost ) 
+            : base(cardName, health, damage, manaCost)
         {
 
         }
