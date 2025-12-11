@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            tutorialButton = new Button();
             SuspendLayout();
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(213, 168);
+            button1.Location = new Point(51, 661);
             button1.Name = "button1";
             button1.Size = new Size(236, 200);
             button1.TabIndex = 0;
@@ -42,19 +43,30 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // tutorialButton
+            // 
+            tutorialButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tutorialButton.Location = new Point(51, 455);
+            tutorialButton.Name = "tutorialButton";
+            tutorialButton.Size = new Size(236, 200);
+            tutorialButton.TabIndex = 1;
+            tutorialButton.Text = "Tutorial";
+            tutorialButton.UseVisualStyleBackColor = true;
+            // 
             // StartScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.ControlDark;
+            Controls.Add(tutorialButton);
             Controls.Add(button1);
             Name = "StartScreen";
-            Size = new Size(710, 584);
+            Size = new Size(1406, 892);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button button1;
+        private Button tutorialButton;
     }
 }
