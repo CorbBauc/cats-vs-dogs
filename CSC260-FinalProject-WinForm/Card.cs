@@ -8,12 +8,14 @@ namespace CSC260_FinalProject_WinForm
 {
     public abstract class Card
     {
+        protected string cardName;
         protected int health;
         protected int damage;
         protected int manaCost;
 
-        public Card(int health, int damage, int manaCost)
+        public Card(string cardName, int health, int damage, int manaCost)
         {
+            this.cardName = cardName;
             this.health = health;
             this.damage = damage;
             this.manaCost = manaCost;
