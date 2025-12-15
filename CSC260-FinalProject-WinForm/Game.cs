@@ -8,12 +8,39 @@ namespace CSC260_FinalProject_WinForm
 {
     public class Game
     {
-        private int _gameTimer = 10000;
+        private Player _playerOne;
+        private Player _playerTwo;
+        private Player _currentPlayer;
 
         public Game()
         {
-
+            
         }
+
+        public Game(Player playerOne, Player playerTwo)
+        {
+            _playerOne = playerOne;
+            _playerTwo = playerTwo;
+            _currentPlayer = playerOne;
+        }
+
+        public Player PlayerOne 
+        {
+            get { return _playerOne; } 
+            set { _playerOne = value; }
+        }
+
+        public Player PlayerTwo
+        {
+            get { return _playerTwo; }
+            set { _playerTwo = value; }
+        }
+
+        public Player CurrentPlayer
+        {
+            get { return _currentPlayer; }
+        }
+
         public void startGame()
         {
 
@@ -31,7 +58,16 @@ namespace CSC260_FinalProject_WinForm
 
         public void endTurn()
         {
-
+            if(_currentPlayer == _playerOne)
+            {
+                _currentPlayer = _playerTwo;
+                _playerTwo.Mana += 1;
+            }
+            else
+            {
+                _currentPlayer = _playerOne;
+                _playerOne.Mana += 1;
+            }
         }
 
 
