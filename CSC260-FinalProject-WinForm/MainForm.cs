@@ -2,18 +2,30 @@ namespace CSC260_FinalProject_WinForm
 {
     public partial class MainForm : Form
     {
-        StartScreen start;
-        SetupScreen setup;
-        GameScreen game;
+        StartScreen startScreen;
+        SetupScreen setupScreen;
+        GameScreen gameScreen;
+        Game game;
+        Player player1;
+        Player player2;
         public MainForm()
         {
             InitializeComponent();
+            startScreen = new StartScreen();
+            setupScreen = new SetupScreen();
+            gameScreen = new GameScreen();
 
-            start = new StartScreen();
-            setup = new SetupScreen();
-            game = new GameScreen();
+            player1 = new Player();
+            player2 = new Player();
 
-            LoadScreen(start);
+            setupScreen.setPlayers(player1, player2);
+
+            LoadScreen(startScreen);
+        }
+
+        public void PassPlayersToGame(Player p1, Player p2)
+        {
+            game = new Game(p1, p2);
         }
 
         public void LoadScreen(UserControl screen)
@@ -25,18 +37,18 @@ namespace CSC260_FinalProject_WinForm
 
         public void ShowStartScreen()
         {
-            LoadScreen(start);
+            LoadScreen(startScreen);
         }
 
         public void ShowSetupScreen()
         {
 
-            LoadScreen(setup);
+            LoadScreen(setupScreen);
         }
         public void ShowGameScreen()
         {
-
-            LoadScreen(game);
+            LoadScreen(gameScreen);
+            gameScreen.LoadGame(this.game);
         }
     }
 }
