@@ -7,16 +7,52 @@ using System.Threading.Tasks;
 
 namespace CSC260_FinalProject_WinForm
 {
-    internal class Player
+    public class Player
     {
-        private string _chosenTeam;
+        private string _name;
+        private string _team;
         private int _health;
         private int _mana;
-        public List<Card> hand;
+        public List<Card> Hand;
 
-        public Player(string team)
+        public Player()
         {
-            _chosenTeam = team;
+            _health = 15;
+            _mana = 2;
+            Hand = new List<Card>();
+        }
+
+        public Player(string name, string team)
+        {
+            _name = name;
+            _team = team;
+            _health = 15;
+            _mana = 2;
+            Hand = new List<Card>();
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public string Team
+        {
+            get { return _team; }
+            set { _team = value; }
+        }
+
+        public int Health
+        {
+            get { return _health; } 
+            set { _health = value; }
+        }
+
+        public int Mana
+        {
+            get { return _mana; }  
+            set { _mana = value; }
         }
 
         public void takeDamage(int damage)
@@ -26,7 +62,7 @@ namespace CSC260_FinalProject_WinForm
 
         public void consumeMana(int mana)
         {
-
+            _mana -= mana;
         }
 
         public void playCard(Card card)
