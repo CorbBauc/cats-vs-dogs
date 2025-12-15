@@ -19,7 +19,7 @@ namespace CSC260_FinalProject_WinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ((MainForm)this.FindForm()).ShowGameScreen();
+            ((MainForm)this.FindForm()).ShowSetupScreen();
         }
     }
 }
