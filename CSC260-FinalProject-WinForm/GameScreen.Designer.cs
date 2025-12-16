@@ -68,6 +68,8 @@
             buttonP1EndTurn = new Button();
             timerTurn = new System.Windows.Forms.Timer(components);
             buttonP2EndTurn = new Button();
+            buttonP1StartAttackPhase = new Button();
+            buttonP2StartAttackPhase = new Button();
             panelP1Health.SuspendLayout();
             panelP1Mana.SuspendLayout();
             gameBoardPanel.SuspendLayout();
@@ -82,17 +84,19 @@
             // labelPlayerOneName
             // 
             labelPlayerOneName.BackColor = SystemColors.HighlightText;
-            labelPlayerOneName.Font = new Font("Segoe UI", 16F);
-            labelPlayerOneName.Location = new Point(67, 697);
+            labelPlayerOneName.Font = new Font("Showcard Gothic", 15.75F);
+            labelPlayerOneName.Location = new Point(289, 354);
             labelPlayerOneName.Name = "labelPlayerOneName";
             labelPlayerOneName.Size = new Size(127, 31);
             labelPlayerOneName.TabIndex = 2;
             labelPlayerOneName.TextAlign = ContentAlignment.MiddleCenter;
+            labelPlayerOneName.Click += labelPlayerOneName_Click;
             // 
             // labelPlayerOneTeam
             // 
             labelPlayerOneTeam.BackColor = SystemColors.HighlightText;
-            labelPlayerOneTeam.Location = new Point(67, 617);
+            labelPlayerOneTeam.Font = new Font("Showcard Gothic", 15.75F);
+            labelPlayerOneTeam.Location = new Point(289, 274);
             labelPlayerOneTeam.Name = "labelPlayerOneTeam";
             labelPlayerOneTeam.Size = new Size(127, 29);
             labelPlayerOneTeam.TabIndex = 3;
@@ -101,18 +105,20 @@
             // labelPlayerTwoName
             // 
             labelPlayerTwoName.BackColor = SystemColors.HighlightText;
-            labelPlayerTwoName.Location = new Point(1725, 421);
+            labelPlayerTwoName.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold);
+            labelPlayerTwoName.Location = new Point(1535, 354);
             labelPlayerTwoName.Name = "labelPlayerTwoName";
-            labelPlayerTwoName.Size = new Size(127, 23);
+            labelPlayerTwoName.Size = new Size(127, 31);
             labelPlayerTwoName.TabIndex = 4;
             labelPlayerTwoName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelPlayerTwoTeam
             // 
             labelPlayerTwoTeam.BackColor = SystemColors.HighlightText;
-            labelPlayerTwoTeam.Location = new Point(1725, 357);
+            labelPlayerTwoTeam.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold);
+            labelPlayerTwoTeam.Location = new Point(1535, 274);
             labelPlayerTwoTeam.Name = "labelPlayerTwoTeam";
-            labelPlayerTwoTeam.Size = new Size(127, 23);
+            labelPlayerTwoTeam.Size = new Size(127, 29);
             labelPlayerTwoTeam.TabIndex = 5;
             labelPlayerTwoTeam.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -131,7 +137,7 @@
             // 
             panelP1Health.BackgroundImage = (Image)resources.GetObject("panelP1Health.BackgroundImage");
             panelP1Health.Controls.Add(labelP1Health);
-            panelP1Health.Location = new Point(28, 757);
+            panelP1Health.Location = new Point(372, 817);
             panelP1Health.Name = "panelP1Health";
             panelP1Health.Size = new Size(100, 100);
             panelP1Health.TabIndex = 11;
@@ -140,7 +146,7 @@
             // 
             panelP1Mana.BackgroundImage = (Image)resources.GetObject("panelP1Mana.BackgroundImage");
             panelP1Mana.Controls.Add(labelP1Mana);
-            panelP1Mana.Location = new Point(147, 757);
+            panelP1Mana.Location = new Point(1484, 817);
             panelP1Mana.Name = "panelP1Mana";
             panelP1Mana.Size = new Size(100, 100);
             panelP1Mana.TabIndex = 12;
@@ -158,7 +164,7 @@
             // gameBoardPanel
             // 
             gameBoardPanel.Anchor = AnchorStyles.None;
-            gameBoardPanel.BackColor = Color.FromArgb(192, 192, 255);
+            gameBoardPanel.BackColor = Color.FromArgb(255, 224, 192);
             gameBoardPanel.Controls.Add(labelPlayersTurn);
             gameBoardPanel.Controls.Add(labelTurnTimer);
             gameBoardPanel.Controls.Add(panel2);
@@ -170,24 +176,25 @@
             // 
             // labelPlayersTurn
             // 
-            labelPlayersTurn.Location = new Point(243, 265);
+            labelPlayersTurn.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelPlayersTurn.Location = new Point(243, 243);
             labelPlayersTurn.Name = "labelPlayersTurn";
-            labelPlayersTurn.Size = new Size(100, 23);
+            labelPlayersTurn.Size = new Size(166, 48);
             labelPlayersTurn.TabIndex = 3;
             labelPlayersTurn.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelTurnTimer
             // 
-            labelTurnTimer.BorderStyle = BorderStyle.FixedSingle;
-            labelTurnTimer.Location = new Point(449, 265);
+            labelTurnTimer.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTurnTimer.Location = new Point(452, 252);
             labelTurnTimer.Name = "labelTurnTimer";
-            labelTurnTimer.Size = new Size(115, 23);
+            labelTurnTimer.Size = new Size(115, 32);
             labelTurnTimer.TabIndex = 2;
             labelTurnTimer.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.White;
+            panel2.BackColor = Color.FromArgb(255, 224, 192);
             panel2.Controls.Add(panelP2ActiveSlot1);
             panel2.Controls.Add(panelP2ActiveSlot2);
             panel2.Controls.Add(panelP2ActiveSlot3);
@@ -198,7 +205,7 @@
             // 
             // panelP2ActiveSlot1
             // 
-            panelP2ActiveSlot1.BackColor = Color.Cyan;
+            panelP2ActiveSlot1.BackColor = Color.FromArgb(224, 224, 224);
             panelP2ActiveSlot1.Location = new Point(276, 12);
             panelP2ActiveSlot1.Name = "panelP2ActiveSlot1";
             panelP2ActiveSlot1.Size = new Size(115, 150);
@@ -206,7 +213,7 @@
             // 
             // panelP2ActiveSlot2
             // 
-            panelP2ActiveSlot2.BackColor = Color.Cyan;
+            panelP2ActiveSlot2.BackColor = Color.FromArgb(224, 224, 224);
             panelP2ActiveSlot2.Location = new Point(434, 12);
             panelP2ActiveSlot2.Name = "panelP2ActiveSlot2";
             panelP2ActiveSlot2.Size = new Size(115, 150);
@@ -214,7 +221,7 @@
             // 
             // panelP2ActiveSlot3
             // 
-            panelP2ActiveSlot3.BackColor = Color.Cyan;
+            panelP2ActiveSlot3.BackColor = Color.FromArgb(224, 224, 224);
             panelP2ActiveSlot3.Location = new Point(588, 11);
             panelP2ActiveSlot3.Name = "panelP2ActiveSlot3";
             panelP2ActiveSlot3.Size = new Size(115, 150);
@@ -222,7 +229,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.FromArgb(255, 224, 192);
             panel1.Controls.Add(panelP1ActiveSlot2);
             panel1.Controls.Add(panelP1ActiveSlot3);
             panel1.Controls.Add(panelP1ActiveSlot1);
@@ -233,7 +240,7 @@
             // 
             // panelP1ActiveSlot2
             // 
-            panelP1ActiveSlot2.BackColor = Color.Cyan;
+            panelP1ActiveSlot2.BackColor = Color.FromArgb(224, 224, 224);
             panelP1ActiveSlot2.Location = new Point(431, 16);
             panelP1ActiveSlot2.Name = "panelP1ActiveSlot2";
             panelP1ActiveSlot2.Size = new Size(115, 150);
@@ -241,7 +248,7 @@
             // 
             // panelP1ActiveSlot3
             // 
-            panelP1ActiveSlot3.BackColor = Color.Cyan;
+            panelP1ActiveSlot3.BackColor = Color.FromArgb(224, 224, 224);
             panelP1ActiveSlot3.Location = new Point(585, 16);
             panelP1ActiveSlot3.Name = "panelP1ActiveSlot3";
             panelP1ActiveSlot3.Size = new Size(115, 150);
@@ -249,7 +256,7 @@
             // 
             // panelP1ActiveSlot1
             // 
-            panelP1ActiveSlot1.BackColor = Color.Cyan;
+            panelP1ActiveSlot1.BackColor = Color.FromArgb(224, 224, 224);
             panelP1ActiveSlot1.Location = new Point(276, 16);
             panelP1ActiveSlot1.Name = "panelP1ActiveSlot1";
             panelP1ActiveSlot1.Size = new Size(115, 150);
@@ -269,7 +276,7 @@
             // 
             panelP2Mana.BackgroundImage = (Image)resources.GetObject("panelP2Mana.BackgroundImage");
             panelP2Mana.Controls.Add(labelP2Mana);
-            panelP2Mana.Location = new Point(1790, 200);
+            panelP2Mana.Location = new Point(1484, 53);
             panelP2Mana.Name = "panelP2Mana";
             panelP2Mana.Size = new Size(100, 100);
             panelP2Mana.TabIndex = 14;
@@ -289,7 +296,7 @@
             // 
             panelP2Health.BackgroundImage = (Image)resources.GetObject("panelP2Health.BackgroundImage");
             panelP2Health.Controls.Add(labelP2Health);
-            panelP2Health.Location = new Point(1671, 200);
+            panelP2Health.Location = new Point(372, 53);
             panelP2Health.Name = "panelP2Health";
             panelP2Health.Size = new Size(100, 100);
             panelP2Health.TabIndex = 13;
@@ -400,7 +407,8 @@
             // 
             // buttonP1EndTurn
             // 
-            buttonP1EndTurn.Location = new Point(67, 484);
+            buttonP1EndTurn.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonP1EndTurn.Location = new Point(287, 513);
             buttonP1EndTurn.Name = "buttonP1EndTurn";
             buttonP1EndTurn.Size = new Size(127, 68);
             buttonP1EndTurn.TabIndex = 17;
@@ -415,7 +423,8 @@
             // 
             // buttonP2EndTurn
             // 
-            buttonP2EndTurn.Location = new Point(1723, 497);
+            buttonP2EndTurn.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonP2EndTurn.Location = new Point(1535, 513);
             buttonP2EndTurn.Name = "buttonP2EndTurn";
             buttonP2EndTurn.Size = new Size(129, 68);
             buttonP2EndTurn.TabIndex = 18;
@@ -423,19 +432,43 @@
             buttonP2EndTurn.UseVisualStyleBackColor = true;
             buttonP2EndTurn.Click += buttonP2EndTurn_Click;
             // 
+            // buttonP1StartAttackPhase
+            // 
+            buttonP1StartAttackPhase.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonP1StartAttackPhase.Location = new Point(287, 427);
+            buttonP1StartAttackPhase.Name = "buttonP1StartAttackPhase";
+            buttonP1StartAttackPhase.Size = new Size(129, 68);
+            buttonP1StartAttackPhase.TabIndex = 19;
+            buttonP1StartAttackPhase.Text = "START ATTACK PHASE";
+            buttonP1StartAttackPhase.UseVisualStyleBackColor = true;
+            buttonP1StartAttackPhase.Click += buttonP1StartAttackPhase_Click;
+            // 
+            // buttonP2StartAttackPhase
+            // 
+            buttonP2StartAttackPhase.Font = new Font("Showcard Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonP2StartAttackPhase.Location = new Point(1535, 427);
+            buttonP2StartAttackPhase.Name = "buttonP2StartAttackPhase";
+            buttonP2StartAttackPhase.Size = new Size(129, 68);
+            buttonP2StartAttackPhase.TabIndex = 20;
+            buttonP2StartAttackPhase.Text = "Start Attack Phase";
+            buttonP2StartAttackPhase.UseVisualStyleBackColor = true;
+            buttonP2StartAttackPhase.Click += buttonP2StartAttackPhase_Click;
+            // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Highlight;
+            Controls.Add(buttonP2StartAttackPhase);
+            Controls.Add(buttonP1StartAttackPhase);
             Controls.Add(buttonP2EndTurn);
+            Controls.Add(panelP1Mana);
+            Controls.Add(panelP1Health);
             Controls.Add(buttonP1EndTurn);
             Controls.Add(panelP2Hand);
             Controls.Add(panelP1Hand);
             Controls.Add(panelP2Mana);
             Controls.Add(panelP2Health);
-            Controls.Add(panelP1Mana);
-            Controls.Add(panelP1Health);
             Controls.Add(labelPlayerTwoTeam);
             Controls.Add(labelPlayerTwoName);
             Controls.Add(labelPlayerOneTeam);
@@ -443,6 +476,7 @@
             Controls.Add(gameBoardPanel);
             Name = "GameScreen";
             Size = new Size(1920, 1080);
+            Load += GameScreen_Load;
             panelP1Health.ResumeLayout(false);
             panelP1Mana.ResumeLayout(false);
             gameBoardPanel.ResumeLayout(false);
@@ -494,5 +528,7 @@
         private Button buttonP2EndTurn;
         private Label labelTurnTimer;
         private Label labelPlayersTurn;
+        private Button buttonP1StartAttackPhase;
+        private Button buttonP2StartAttackPhase;
     }
 }

@@ -5,15 +5,18 @@ namespace CSC260_FinalProject_WinForm
         StartScreen startScreen;
         SetupScreen setupScreen;
         GameScreen gameScreen;
+        WinnerScreen winnerScreen;
         Game game;
         Player player1;
         Player player2;
         public MainForm()
         {
             InitializeComponent();
+
             startScreen = new StartScreen();
             setupScreen = new SetupScreen();
             gameScreen = new GameScreen();
+            winnerScreen = new WinnerScreen();
 
             player1 = new Player();
             player2 = new Player();
@@ -49,6 +52,12 @@ namespace CSC260_FinalProject_WinForm
         {
             LoadScreen(gameScreen);
             gameScreen.LoadGame(this.game);
+        }
+
+        public void ShowWinnerScreen(Player winner)
+        {
+            winnerScreen.SetWinner(winner);
+            LoadScreen(winnerScreen);
         }
     }
 }

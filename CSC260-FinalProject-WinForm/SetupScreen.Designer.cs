@@ -41,14 +41,14 @@
             labelNameLeft = new Label();
             labelNameRight = new Label();
             panelEnterNames = new Panel();
+            panelRollDice = new Panel();
             panelTeamSelect = new Panel();
             buttonCats = new Button();
             buttonDogs = new Button();
             labelTeamSelect = new Label();
-            panelRollDice = new Panel();
             panelEnterNames.SuspendLayout();
-            panelTeamSelect.SuspendLayout();
             panelRollDice.SuspendLayout();
+            panelTeamSelect.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -171,10 +171,23 @@
             panelEnterNames.Controls.Add(nameInputRight);
             panelEnterNames.Controls.Add(labelEnterNameLeft);
             panelEnterNames.Controls.Add(labelEnterNameRight);
-            panelEnterNames.Location = new Point(24, 9);
+            panelEnterNames.Location = new Point(548, 136);
             panelEnterNames.Name = "panelEnterNames";
             panelEnterNames.Size = new Size(965, 631);
             panelEnterNames.TabIndex = 12;
+            // 
+            // panelRollDice
+            // 
+            panelRollDice.Controls.Add(buttonDiceRollLeft);
+            panelRollDice.Controls.Add(labelDiceRollOutcomeLeft);
+            panelRollDice.Controls.Add(labelNameRight);
+            panelRollDice.Controls.Add(buttonDiceRollRight);
+            panelRollDice.Controls.Add(labelDiceRollOutcomeRight);
+            panelRollDice.Controls.Add(labelNameLeft);
+            panelRollDice.Location = new Point(551, 123);
+            panelRollDice.Name = "panelRollDice";
+            panelRollDice.Size = new Size(959, 496);
+            panelRollDice.TabIndex = 13;
             // 
             // panelTeamSelect
             // 
@@ -182,7 +195,7 @@
             panelTeamSelect.Controls.Add(buttonDogs);
             panelTeamSelect.Controls.Add(button1);
             panelTeamSelect.Controls.Add(labelTeamSelect);
-            panelTeamSelect.Location = new Point(1020, 134);
+            panelTeamSelect.Location = new Point(638, 113);
             panelTeamSelect.Name = "panelTeamSelect";
             panelTeamSelect.Size = new Size(785, 506);
             panelTeamSelect.TabIndex = 14;
@@ -218,19 +231,6 @@
             labelTeamSelect.Size = new Size(434, 37);
             labelTeamSelect.TabIndex = 0;
             // 
-            // panelRollDice
-            // 
-            panelRollDice.Controls.Add(buttonDiceRollLeft);
-            panelRollDice.Controls.Add(labelDiceRollOutcomeLeft);
-            panelRollDice.Controls.Add(labelNameRight);
-            panelRollDice.Controls.Add(buttonDiceRollRight);
-            panelRollDice.Controls.Add(labelDiceRollOutcomeRight);
-            panelRollDice.Controls.Add(labelNameLeft);
-            panelRollDice.Location = new Point(30, 309);
-            panelRollDice.Name = "panelRollDice";
-            panelRollDice.Size = new Size(959, 496);
-            panelRollDice.TabIndex = 13;
-            // 
             // SetupScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -242,8 +242,8 @@
             Size = new Size(1920, 1080);
             panelEnterNames.ResumeLayout(false);
             panelEnterNames.PerformLayout();
-            panelTeamSelect.ResumeLayout(false);
             panelRollDice.ResumeLayout(false);
+            panelTeamSelect.ResumeLayout(false);
             ResumeLayout(false);
         }
 

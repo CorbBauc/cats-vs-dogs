@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            tutorialButton = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(51, 661);
+            button1.Font = new Font("Showcard Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(860, 449);
             button1.Name = "button1";
             button1.Size = new Size(236, 200);
             button1.TabIndex = 0;
@@ -43,30 +43,30 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // tutorialButton
+            // label1
             // 
-            tutorialButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tutorialButton.Location = new Point(51, 455);
-            tutorialButton.Name = "tutorialButton";
-            tutorialButton.Size = new Size(236, 200);
-            tutorialButton.TabIndex = 1;
-            tutorialButton.Text = "Tutorial";
-            tutorialButton.UseVisualStyleBackColor = true;
+            label1.Font = new Font("Showcard Gothic", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(754, 202);
+            label1.Name = "label1";
+            label1.Size = new Size(441, 76);
+            label1.TabIndex = 1;
+            label1.Text = "DOGS VS. CATS";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // StartScreen
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.ControlDark;
-            Controls.Add(tutorialButton);
+            Controls.Add(label1);
             Controls.Add(button1);
             Name = "StartScreen";
-            Size = new Size(1406, 892);
+            Size = new Size(1920, 1080);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button button1;
-        private Button tutorialButton;
+        private Label label1;
     }
 }

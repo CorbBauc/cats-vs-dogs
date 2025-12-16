@@ -73,6 +73,16 @@ namespace CSC260_FinalProject_WinForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TankCat {
+            get {
+                object obj = ResourceManager.GetObject("TankCat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TankDog {
             get {
                 object obj = ResourceManager.GetObject("TankDog", resourceCulture);

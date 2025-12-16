@@ -74,6 +74,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Transparent;
             Controls.Add(labelDamage);
             Controls.Add(labelHealth);
             Controls.Add(labelMana);

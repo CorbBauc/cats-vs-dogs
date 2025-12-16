@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,9 +18,11 @@ namespace CSC260_FinalProject_WinForm
         private CardSlot[] playerTwoHandSlots = new CardSlot[5];
         private BoardSlot[] playerOneActiveSlots = new BoardSlot[3];
         private BoardSlot[] playerTwoActiveSlots = new BoardSlot[3];
-        private int _remainingTime;
         private Card _selectedCard;
         private CardSlot _selectedCardSlot;
+        private BoardSlot _selectedAttackerSlot;
+        private int _remainingTime;
+        private bool _isAttackPhase = false;
 
         public GameScreen()
         {
@@ -45,7 +48,7 @@ namespace CSC260_FinalProject_WinForm
             panelP2HandSlot4.Controls.Add(playerTwoHandSlots[3]);
             panelP2HandSlot5.Controls.Add(playerTwoHandSlots[4]);
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 playerOneActiveSlots[i] = new BoardSlot();
                 playerTwoActiveSlots[i] = new BoardSlot();
@@ -69,15 +72,158 @@ namespace CSC260_FinalProject_WinForm
                 slot.SlotClicked += OnBoardSlotClicked;
             }
 
+            buttonP2EndTurn.Hide();
+            buttonP2StartAttackPhase.Hide();
+        }
+
+        public void ResetAllAttacks()
+        {
+            foreach (var slot in playerOneActiveSlots)
+            {
+                slot.ResetAttack();
+            }
+
+            foreach (var slot in playerTwoActiveSlots)
+            {
+                slot.ResetAttack();
+            }
+        }
+
+        public void EndGame(Player winner)
+        {
+            timerTurn.Stop();
+            _isAttackPhase = false;
+
+            ((MainForm)FindForm()).ShowWinnerScreen(winner);
+            this.Hide();
+        }
+
+        public void CheckWinCondition()
+        {
+            if (_game.PlayerOne.Health <= 0)
+            {
+                EndGame(_game.PlayerTwo);
+            }
+            else if (_game.PlayerTwo.Health <= 0)
+            {
+                EndGame(_game.PlayerOne);
+            }
+        }
+
+        public void ExitAttackPhase()
+        {
+            if (!_isAttackPhase) return;
+
+            _isAttackPhase = false;
+
+            if (_selectedAttackerSlot != null)
+            {
+                _selectedAttackerSlot.BackColor = Color.Transparent;
+            }
+
+            _selectedAttackerSlot = null;
+        }
+
+        public void InitiateCardCombat(BoardSlot attacker, BoardSlot defender)
+        {
+            attacker.Card.Health -= defender.Card.Damage;
+            defender.Card.Health -= attacker.Card.Damage;
+
+            if (attacker.Card.Health <= 0)
+            {
+                attacker.ClearSlot();
+            }
+
+            if (defender.Card.Health <= 0)
+            {
+                defender.ClearSlot();
+            }
+
+            LoadUI();
+            CheckWinCondition();
+        }
+
+        public void InitiateDirectAttack()
+        {
+            Player player;
+
+            if (_game.CurrentPlayer == _game.PlayerOne)
+            {
+                player = _game.PlayerTwo;
+            }
+            else
+            {
+                player = _game.PlayerOne;
+            }
+
+            player.Health -= _selectedAttackerSlot.Card.Damage;
+            LoadUI();
+            CheckWinCondition();
+        }
+
+        public void HandleAttackClick(BoardSlot slot)
+        {
+            bool p1Turn = (_game.CurrentPlayer == _game.PlayerOne);
+            BoardSlot[] friendlySlots = p1Turn ? playerOneActiveSlots : playerTwoActiveSlots;
+            BoardSlot[] enemySlots = p1Turn ? playerTwoActiveSlots : playerOneActiveSlots;
+
+            if (!_isAttackPhase)
+            {
+                return;
+            }
+
+            if (_selectedAttackerSlot == null)
+            {
+                if (!friendlySlots.Contains(slot) || slot.IsEmpty || slot.HasAttacked)
+                {
+                    MessageBox.Show("Select one of your own cards.");
+                    return;
+                }
+
+                _selectedAttackerSlot = slot;
+                slot.BackColor = Color.Gold;
+                return;
+            }
+
+            if (enemySlots.Contains(slot) && !slot.IsEmpty)
+            {
+                var attacker = _selectedAttackerSlot;
+
+                InitiateCardCombat(_selectedAttackerSlot, slot);
+
+                if (attacker != null && !attacker.IsEmpty)
+                {
+                    attacker.SetAttacked();
+                }
+
+                ExitAttackPhase();
+                return;
+            }
+
+            if (enemySlots.Contains(slot) && slot.IsEmpty)
+            {
+                var attacker = _selectedAttackerSlot;
+
+                InitiateDirectAttack();
+
+                if (attacker != null && !attacker.IsEmpty)
+                {
+                    attacker.SetAttacked();
+                }
+
+                ExitAttackPhase();
+                return;
+            }
+
         }
 
         public void OnCardSelected(CardSlot slot)
         {
             Card card = slot.Card;
 
-            bool p1Turn = (_game.CurrentPlayer == _game.PlayerOne); 
+            bool p1Turn = (_game.CurrentPlayer == _game.PlayerOne);
 
-            if(p1Turn && !_game.PlayerOne.Hand.Contains(card))
+            if (p1Turn && !_game.PlayerOne.Hand.Contains(card))
             {
                 return;
             }
@@ -89,10 +235,11 @@ namespace CSC260_FinalProject_WinForm
 
             if (_game.CurrentPlayer.Mana < card.Mana)
             {
+
                 return;
             }
-            
-            if(_selectedCardSlot != null)
+
+            if (_selectedCardSlot != null)
             {
                 _selectedCardSlot.ClearSelected();
             }
@@ -105,7 +252,13 @@ namespace CSC260_FinalProject_WinForm
 
         public void OnBoardSlotClicked(BoardSlot slot)
         {
-            if(_selectedCard == null)
+            if (_isAttackPhase)
+            {
+                HandleAttackClick(slot);
+                return;
+            }
+
+            if (_selectedCard == null)
             {
                 return;
             }
@@ -117,7 +270,7 @@ namespace CSC260_FinalProject_WinForm
 
             bool p1Turn = (_game.CurrentPlayer == _game.PlayerOne);
 
-            if(p1Turn && !playerOneActiveSlots.Contains(slot))
+            if (p1Turn && !playerOneActiveSlots.Contains(slot))
             {
                 return;
             }
@@ -139,9 +292,11 @@ namespace CSC260_FinalProject_WinForm
 
 
         }
+
         public void LoadGame(Game game)
         {
             _game = game;
+            ResetAllAttacks();
             LoadUI();
             _remainingTime = 30;
             timerTurn.Start();
@@ -160,7 +315,7 @@ namespace CSC260_FinalProject_WinForm
             labelPlayerTwoTeam.Text = _game.PlayerTwo.Team;
             labelPlayerTwoName.Text = _game.PlayerTwo.Name;
 
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 playerOneHandSlots[i].ClearSlot();
                 playerTwoHandSlots[i].ClearSlot();
@@ -175,13 +330,35 @@ namespace CSC260_FinalProject_WinForm
             {
                 playerTwoHandSlots[i].LoadCard(_game.PlayerTwo.Hand[i]);
             }
+
+            for (int i = 0; i < playerOneActiveSlots.Length; i++)
+            {
+                if (!playerOneActiveSlots[i].IsEmpty)
+                {
+                    playerOneActiveSlots[i].LoadCardInSlot(playerOneActiveSlots[i].Card);
+                }
+            }
+
+            for (int i = 0; i < playerTwoActiveSlots.Length; i++)
+            {
+                if (!playerTwoActiveSlots[i].IsEmpty)
+                {
+                    playerTwoActiveSlots[i].LoadCardInSlot(playerTwoActiveSlots[i].Card);
+                }
+            }
         }
 
         private void buttonP1EndTurn_Click(object sender, EventArgs e)
         {
             _game.endTurn();
+            ResetAllAttacks();
             buttonP1EndTurn.Enabled = false;
             buttonP2EndTurn.Enabled = true;
+            buttonP2StartAttackPhase.Enabled = true;
+            buttonP1EndTurn.Hide();
+            buttonP1StartAttackPhase.Hide();
+            buttonP2EndTurn.Show();
+            buttonP2StartAttackPhase.Show();
             LoadUI();
             labelPlayersTurn.Text = $"{_game.PlayerTwo.Name}'s Turn";
             _remainingTime = 30;
@@ -191,28 +368,76 @@ namespace CSC260_FinalProject_WinForm
 
         private void buttonP2EndTurn_Click(object sender, EventArgs e)
         {
-            timerTurn.Stop();
             _game.endTurn();
+            ResetAllAttacks();
             buttonP2EndTurn.Enabled = false;
             buttonP1EndTurn.Enabled = true;
+            buttonP1StartAttackPhase.Enabled = true;
+            buttonP2EndTurn.Hide();
+            buttonP2StartAttackPhase.Hide();
+            buttonP1EndTurn.Show();
+            buttonP1StartAttackPhase.Show();
             LoadUI();
             labelPlayersTurn.Text = $"{_game.PlayerOne.Name}'s Turn";
             _remainingTime = 30;
             labelTurnTimer.Text = _remainingTime.ToString();
             timerTurn.Start();
+        }
 
+        private void buttonP1StartAttackPhase_Click(object sender, EventArgs e)
+        {
+            timerTurn.Stop();
+            buttonP1StartAttackPhase.Enabled = false;
+            _isAttackPhase = true;
+            _selectedAttackerSlot = null;
+            _selectedCard = null;
+
+            if (_selectedCardSlot != null)
+            {
+                _selectedCardSlot.ClearSelected();
+            }
+
+            MessageBox.Show("Select one of your active cards to attack with!");
+        }
+
+        private void buttonP2StartAttackPhase_Click(object sender, EventArgs e)
+        {
+            if (_isAttackPhase)
+            {
+                return;
+            }
+
+            timerTurn.Stop();
+            buttonP2StartAttackPhase.Enabled = false;
+            _isAttackPhase = true;
+            _selectedAttackerSlot = null;
+            _selectedCard = null;
+
+            if (_selectedCardSlot != null)
+            {
+                _selectedCardSlot.ClearSelected();
+            }
+
+            MessageBox.Show("Select one of your active cards to attack with!");
         }
 
         private void timerTurn_Tick(object sender, EventArgs e)
         {
+            if (_isAttackPhase)
+            {
+                return;
+            }
+
             _remainingTime--;
             labelTurnTimer.Text = _remainingTime.ToString();
-            if(_remainingTime == 0)
+            if (_remainingTime == 0)
             {
                 timerTurn.Stop();
                 _game.endTurn();
+                ResetAllAttacks();
                 _remainingTime = 30;
                 labelTurnTimer.Text = _remainingTime.ToString();
+
                 timerTurn.Start();
 
                 if (_game.CurrentPlayer == _game.PlayerOne)
@@ -230,8 +455,18 @@ namespace CSC260_FinalProject_WinForm
                     buttonP2EndTurn.Enabled = true;
                     buttonP1EndTurn.Enabled = false;
                     labelPlayersTurn.Text = $"{_game.PlayerTwo.Name}'s Turn";
-                } 
+                }
             }
+        }
+
+        private void GameScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPlayerOneName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

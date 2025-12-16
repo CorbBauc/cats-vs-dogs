@@ -14,6 +14,7 @@ namespace CSC260_FinalProject_WinForm
     {
         private Card _card;
         private bool _isEmpty = true;
+        private bool _hasAttacked = false;
         public event Action<BoardSlot> SlotClicked;
         public BoardSlot()
         {
@@ -29,6 +30,31 @@ namespace CSC260_FinalProject_WinForm
         public bool IsEmpty
         {
             get { return _isEmpty; }
+        }
+
+        public bool HasAttacked
+        {
+           get { return _hasAttacked; }
+           set { _hasAttacked = value; }
+        }
+
+        public Card Card
+        {
+            get { return _card;  }
+        }
+
+
+
+        public void SetAttacked()
+        {
+            _hasAttacked = true;
+            this.BackColor = Color.DarkGray;
+        }
+
+        public void ResetAttack()
+        {
+            _hasAttacked = false;
+            this.BackColor = Color.Transparent;
         }
 
         public void LoadCardInSlot(Card card)

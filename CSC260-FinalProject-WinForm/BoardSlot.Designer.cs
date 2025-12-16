@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             pictureBoxCardArt = new PictureBox();
-            labelMana = new Label();
             labelHealth = new Label();
             labelDamage = new Label();
+            labelMana = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxCardArt).BeginInit();
             SuspendLayout();
             // 
@@ -43,32 +43,32 @@
             pictureBoxCardArt.TabIndex = 0;
             pictureBoxCardArt.TabStop = false;
             // 
-            // labelMana
-            // 
-            labelMana.AutoSize = true;
-            labelMana.Location = new Point(65, 11);
-            labelMana.Name = "labelMana";
-            labelMana.Size = new Size(38, 15);
-            labelMana.TabIndex = 2;
-            labelMana.Text = "label1";
-            // 
             // labelHealth
             // 
             labelHealth.AutoSize = true;
             labelHealth.Location = new Point(3, 123);
             labelHealth.Name = "labelHealth";
-            labelHealth.Size = new Size(38, 15);
+            labelHealth.Size = new Size(0, 15);
             labelHealth.TabIndex = 4;
-            labelHealth.Text = "label2";
+            labelHealth.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelDamage
             // 
             labelDamage.AutoSize = true;
-            labelDamage.Location = new Point(65, 123);
+            labelDamage.Location = new Point(74, 123);
             labelDamage.Name = "labelDamage";
-            labelDamage.Size = new Size(38, 15);
+            labelDamage.Size = new Size(0, 15);
             labelDamage.TabIndex = 6;
-            labelDamage.Text = "label3";
+            labelDamage.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelMana
+            // 
+            labelMana.AutoSize = true;
+            labelMana.Location = new Point(74, 11);
+            labelMana.Name = "labelMana";
+            labelMana.Size = new Size(0, 15);
+            labelMana.TabIndex = 2;
+            labelMana.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BoardSlot
             // 
@@ -88,8 +88,8 @@
         #endregion
 
         private PictureBox pictureBoxCardArt;
-        private Label labelMana;
         private Label labelHealth;
         private Label labelDamage;
+        private Label labelMana;
     }
 }

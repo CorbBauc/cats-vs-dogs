@@ -47,21 +47,21 @@ namespace CSC260_FinalProject_WinForm
                 _player2.Hand = new List<Card>
                 {
                     //Change to CatCard after creating that class
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog)
+                    new CatCard("Tank Cat", 10, 2, 3, Properties.Resources.TankCat),
+                    new CatCard("Cheap Cat", 4, 1, 1, Properties.Resources.TankCat),
+                    new CatCard("Attack Cat", 5, 7, 3, Properties.Resources.TankCat),
+                    new CatCard("OP Cat", 10, 2, 3, Properties.Resources.TankCat),
+                    new CatCard("Average Cat", 10, 2, 3, Properties.Resources.TankCat)
                 };
             } else
             {
                 _player1.Hand = new List<Card>
                 {
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.health),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankDog)
+                    new DogCard("Tank Cat", 10, 2, 3, Properties.Resources.TankCat),
+                    new DogCard("Cheap Cat", 4, 1, 1, Properties.Resources.TankCat),
+                    new DogCard("Attack Cat", 5, 7, 3, Properties.Resources.TankCat),
+                    new DogCard("OP Cat", 10, 10, 10, Properties.Resources.TankCat),
+                    new DogCard("Average Cat", 5, 5, 5, Properties.Resources.TankCat)
                 };
                 _player2.Hand = new List<Card>
                 {
@@ -145,12 +145,14 @@ namespace CSC260_FinalProject_WinForm
             this.buttonDiceRollRight.Enabled = false;
             this.panelEnterNames.Visible = false;
             this.panelRollDice.Visible = true;
+            this.panelRollDice.BringToFront();
         }
         public void teamSelectTransition()
         {
             this.panelRollDice.Visible = false;
             this.panelTeamSelect.Visible = true;
             this.labelTeamSelect.Text =  $"{_player1.Name}, please choose your team!";
+            this.labelTeamSelect.BringToFront();
         }
 
         private void buttonDogs_Click(object sender, EventArgs e)
