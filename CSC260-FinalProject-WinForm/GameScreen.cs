@@ -459,11 +459,6 @@ namespace CSC260_FinalProject_WinForm
             }
         }
 
-        private void GameScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void labelPlayerOneName_Click(object sender, EventArgs e)
         {
 

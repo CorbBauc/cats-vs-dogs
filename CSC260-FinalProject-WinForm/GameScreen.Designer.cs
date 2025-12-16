@@ -476,7 +476,6 @@
             Controls.Add(gameBoardPanel);
             Name = "GameScreen";
             Size = new Size(1920, 1080);
-            Load += GameScreen_Load;
             panelP1Health.ResumeLayout(false);
             panelP1Mana.ResumeLayout(false);
             gameBoardPanel.ResumeLayout(false);
