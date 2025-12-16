@@ -28,300 +28,471 @@
         /// </summary>
         private void InitializeComponent()
         {
-            startScreenButton = new Button();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScreen));
+            labelPlayerOneName = new Label();
+            labelPlayerOneTeam = new Label();
+            labelPlayerTwoName = new Label();
+            labelPlayerTwoTeam = new Label();
+            labelP1Health = new Label();
+            panelP1Health = new Panel();
+            panelP1Mana = new Panel();
+            labelP1Mana = new Label();
             gameBoardPanel = new Panel();
-            playerTwoSlot4 = new Panel();
-            pictureBox5 = new PictureBox();
-            playerTwoSlot3 = new Panel();
-            pictureBox4 = new PictureBox();
-            playerTwoSlot2 = new Panel();
-            pictureBox3 = new PictureBox();
-            playerTwoSlot1 = new Panel();
-            pictureBox2 = new PictureBox();
-            playerOneSlot4 = new Panel();
-            pictureBox8 = new PictureBox();
-            playerOneSlot3 = new Panel();
-            pictureBox7 = new PictureBox();
-            playerOneSlot2 = new Panel();
-            pictureBox6 = new PictureBox();
-            playerOneSlot1 = new Panel();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
+            labelPlayersTurn = new Label();
+            labelTurnTimer = new Label();
+            panel2 = new Panel();
+            panelP2ActiveSlot1 = new Panel();
+            panelP2ActiveSlot2 = new Panel();
+            panelP2ActiveSlot3 = new Panel();
+            panel1 = new Panel();
+            panelP1ActiveSlot2 = new Panel();
+            panelP1ActiveSlot3 = new Panel();
+            panelP1ActiveSlot1 = new Panel();
+            labelP2Mana = new Label();
+            panelP2Mana = new Panel();
+            labelP2Health = new Label();
+            panelP2Health = new Panel();
+            panelP1Hand = new Panel();
+            panelP1HandSlot5 = new Panel();
+            panelP1HandSlot4 = new Panel();
+            panelP1HandSlot3 = new Panel();
+            panelP1HandSlot2 = new Panel();
+            panelP1HandSlot1 = new Panel();
+            panelP2Hand = new Panel();
+            panelP2HandSlot5 = new Panel();
+            panelP2HandSlot4 = new Panel();
+            panelP2HandSlot3 = new Panel();
+            panelP2HandSlot2 = new Panel();
+            panelP2HandSlot1 = new Panel();
+            buttonP1EndTurn = new Button();
+            timerTurn = new System.Windows.Forms.Timer(components);
+            buttonP2EndTurn = new Button();
+            panelP1Health.SuspendLayout();
+            panelP1Mana.SuspendLayout();
             gameBoardPanel.SuspendLayout();
-            playerTwoSlot4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            playerTwoSlot3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            playerTwoSlot2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            playerTwoSlot1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            playerOneSlot4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
-            playerOneSlot3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            playerOneSlot2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            playerOneSlot1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
+            panelP2Mana.SuspendLayout();
+            panelP2Health.SuspendLayout();
+            panelP1Hand.SuspendLayout();
+            panelP2Hand.SuspendLayout();
             SuspendLayout();
             // 
-            // startScreenButton
+            // labelPlayerOneName
             // 
-            startScreenButton.Location = new Point(28, 15);
-            startScreenButton.Name = "startScreenButton";
-            startScreenButton.Size = new Size(118, 63);
-            startScreenButton.TabIndex = 0;
-            startScreenButton.Text = "StartScreen";
-            startScreenButton.UseVisualStyleBackColor = true;
-            startScreenButton.Click += startScreenButton_Click;
+            labelPlayerOneName.BackColor = SystemColors.HighlightText;
+            labelPlayerOneName.Font = new Font("Segoe UI", 16F);
+            labelPlayerOneName.Location = new Point(67, 697);
+            labelPlayerOneName.Name = "labelPlayerOneName";
+            labelPlayerOneName.Size = new Size(127, 31);
+            labelPlayerOneName.TabIndex = 2;
+            labelPlayerOneName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerOneTeam
+            // 
+            labelPlayerOneTeam.BackColor = SystemColors.HighlightText;
+            labelPlayerOneTeam.Location = new Point(67, 617);
+            labelPlayerOneTeam.Name = "labelPlayerOneTeam";
+            labelPlayerOneTeam.Size = new Size(127, 29);
+            labelPlayerOneTeam.TabIndex = 3;
+            labelPlayerOneTeam.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerTwoName
+            // 
+            labelPlayerTwoName.BackColor = SystemColors.HighlightText;
+            labelPlayerTwoName.Location = new Point(1725, 421);
+            labelPlayerTwoName.Name = "labelPlayerTwoName";
+            labelPlayerTwoName.Size = new Size(127, 23);
+            labelPlayerTwoName.TabIndex = 4;
+            labelPlayerTwoName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerTwoTeam
+            // 
+            labelPlayerTwoTeam.BackColor = SystemColors.HighlightText;
+            labelPlayerTwoTeam.Location = new Point(1725, 357);
+            labelPlayerTwoTeam.Name = "labelPlayerTwoTeam";
+            labelPlayerTwoTeam.Size = new Size(127, 23);
+            labelPlayerTwoTeam.TabIndex = 5;
+            labelPlayerTwoTeam.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelP1Health
+            // 
+            labelP1Health.BackColor = Color.FromArgb(210, 40, 40);
+            labelP1Health.Font = new Font("Lucida Console", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelP1Health.Location = new Point(26, 33);
+            labelP1Health.Name = "labelP1Health";
+            labelP1Health.Size = new Size(49, 31);
+            labelP1Health.TabIndex = 7;
+            labelP1Health.Text = "10";
+            labelP1Health.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelP1Health
+            // 
+            panelP1Health.BackgroundImage = (Image)resources.GetObject("panelP1Health.BackgroundImage");
+            panelP1Health.Controls.Add(labelP1Health);
+            panelP1Health.Location = new Point(28, 757);
+            panelP1Health.Name = "panelP1Health";
+            panelP1Health.Size = new Size(100, 100);
+            panelP1Health.TabIndex = 11;
+            // 
+            // panelP1Mana
+            // 
+            panelP1Mana.BackgroundImage = (Image)resources.GetObject("panelP1Mana.BackgroundImage");
+            panelP1Mana.Controls.Add(labelP1Mana);
+            panelP1Mana.Location = new Point(147, 757);
+            panelP1Mana.Name = "panelP1Mana";
+            panelP1Mana.Size = new Size(100, 100);
+            panelP1Mana.TabIndex = 12;
+            // 
+            // labelP1Mana
+            // 
+            labelP1Mana.BackColor = Color.FromArgb(115, 223, 244);
+            labelP1Mana.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelP1Mana.Location = new Point(39, 33);
+            labelP1Mana.Name = "labelP1Mana";
+            labelP1Mana.Size = new Size(27, 33);
+            labelP1Mana.TabIndex = 0;
+            labelP1Mana.Text = "5";
             // 
             // gameBoardPanel
             // 
             gameBoardPanel.Anchor = AnchorStyles.None;
             gameBoardPanel.BackColor = Color.FromArgb(192, 192, 255);
-            gameBoardPanel.Controls.Add(playerTwoSlot4);
-            gameBoardPanel.Controls.Add(playerTwoSlot3);
-            gameBoardPanel.Controls.Add(playerTwoSlot2);
-            gameBoardPanel.Controls.Add(playerTwoSlot1);
-            gameBoardPanel.Controls.Add(playerOneSlot4);
-            gameBoardPanel.Controls.Add(playerOneSlot3);
-            gameBoardPanel.Controls.Add(playerOneSlot2);
-            gameBoardPanel.Controls.Add(playerOneSlot1);
-            gameBoardPanel.Location = new Point(258, 186);
+            gameBoardPanel.Controls.Add(labelPlayersTurn);
+            gameBoardPanel.Controls.Add(labelTurnTimer);
+            gameBoardPanel.Controls.Add(panel2);
+            gameBoardPanel.Controls.Add(panel1);
+            gameBoardPanel.Location = new Point(478, 212);
             gameBoardPanel.Name = "gameBoardPanel";
-            gameBoardPanel.Size = new Size(1371, 647);
+            gameBoardPanel.Size = new Size(1000, 549);
             gameBoardPanel.TabIndex = 1;
             // 
-            // playerTwoSlot4
+            // labelPlayersTurn
             // 
-            playerTwoSlot4.BackColor = Color.White;
-            playerTwoSlot4.Controls.Add(pictureBox5);
-            playerTwoSlot4.Location = new Point(1045, 19);
-            playerTwoSlot4.Name = "playerTwoSlot4";
-            playerTwoSlot4.Size = new Size(170, 200);
-            playerTwoSlot4.TabIndex = 2;
+            labelPlayersTurn.Location = new Point(243, 265);
+            labelPlayersTurn.Name = "labelPlayersTurn";
+            labelPlayersTurn.Size = new Size(100, 23);
+            labelPlayersTurn.TabIndex = 3;
+            labelPlayersTurn.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox5
+            // labelTurnTimer
             // 
-            pictureBox5.Dock = DockStyle.Fill;
-            pictureBox5.Location = new Point(0, 0);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(170, 200);
-            pictureBox5.TabIndex = 0;
-            pictureBox5.TabStop = false;
+            labelTurnTimer.BorderStyle = BorderStyle.FixedSingle;
+            labelTurnTimer.Location = new Point(449, 265);
+            labelTurnTimer.Name = "labelTurnTimer";
+            labelTurnTimer.Size = new Size(115, 23);
+            labelTurnTimer.TabIndex = 2;
+            labelTurnTimer.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // playerTwoSlot3
+            // panel2
             // 
-            playerTwoSlot3.BackColor = Color.White;
-            playerTwoSlot3.Controls.Add(pictureBox4);
-            playerTwoSlot3.Location = new Point(759, 19);
-            playerTwoSlot3.Name = "playerTwoSlot3";
-            playerTwoSlot3.Size = new Size(170, 200);
-            playerTwoSlot3.TabIndex = 2;
+            panel2.BackColor = Color.White;
+            panel2.Controls.Add(panelP2ActiveSlot1);
+            panel2.Controls.Add(panelP2ActiveSlot2);
+            panel2.Controls.Add(panelP2ActiveSlot3);
+            panel2.Location = new Point(18, 20);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(964, 182);
+            panel2.TabIndex = 1;
             // 
-            // pictureBox4
+            // panelP2ActiveSlot1
             // 
-            pictureBox4.Dock = DockStyle.Fill;
-            pictureBox4.Location = new Point(0, 0);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(170, 200);
-            pictureBox4.TabIndex = 0;
-            pictureBox4.TabStop = false;
+            panelP2ActiveSlot1.BackColor = Color.Cyan;
+            panelP2ActiveSlot1.Location = new Point(276, 12);
+            panelP2ActiveSlot1.Name = "panelP2ActiveSlot1";
+            panelP2ActiveSlot1.Size = new Size(115, 150);
+            panelP2ActiveSlot1.TabIndex = 4;
             // 
-            // playerTwoSlot2
+            // panelP2ActiveSlot2
             // 
-            playerTwoSlot2.BackColor = Color.White;
-            playerTwoSlot2.Controls.Add(pictureBox3);
-            playerTwoSlot2.Location = new Point(490, 19);
-            playerTwoSlot2.Name = "playerTwoSlot2";
-            playerTwoSlot2.Size = new Size(170, 200);
-            playerTwoSlot2.TabIndex = 2;
+            panelP2ActiveSlot2.BackColor = Color.Cyan;
+            panelP2ActiveSlot2.Location = new Point(434, 12);
+            panelP2ActiveSlot2.Name = "panelP2ActiveSlot2";
+            panelP2ActiveSlot2.Size = new Size(115, 150);
+            panelP2ActiveSlot2.TabIndex = 4;
             // 
-            // pictureBox3
+            // panelP2ActiveSlot3
             // 
-            pictureBox3.Dock = DockStyle.Fill;
-            pictureBox3.Location = new Point(0, 0);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(170, 200);
-            pictureBox3.TabIndex = 0;
-            pictureBox3.TabStop = false;
+            panelP2ActiveSlot3.BackColor = Color.Cyan;
+            panelP2ActiveSlot3.Location = new Point(588, 11);
+            panelP2ActiveSlot3.Name = "panelP2ActiveSlot3";
+            panelP2ActiveSlot3.Size = new Size(115, 150);
+            panelP2ActiveSlot3.TabIndex = 4;
             // 
-            // playerTwoSlot1
+            // panel1
             // 
-            playerTwoSlot1.BackColor = Color.White;
-            playerTwoSlot1.Controls.Add(pictureBox2);
-            playerTwoSlot1.Location = new Point(219, 19);
-            playerTwoSlot1.Name = "playerTwoSlot1";
-            playerTwoSlot1.Size = new Size(170, 200);
-            playerTwoSlot1.TabIndex = 2;
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(panelP1ActiveSlot2);
+            panel1.Controls.Add(panelP1ActiveSlot3);
+            panel1.Controls.Add(panelP1ActiveSlot1);
+            panel1.Location = new Point(18, 341);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(964, 187);
+            panel1.TabIndex = 0;
             // 
-            // pictureBox2
+            // panelP1ActiveSlot2
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(170, 200);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
+            panelP1ActiveSlot2.BackColor = Color.Cyan;
+            panelP1ActiveSlot2.Location = new Point(431, 16);
+            panelP1ActiveSlot2.Name = "panelP1ActiveSlot2";
+            panelP1ActiveSlot2.Size = new Size(115, 150);
+            panelP1ActiveSlot2.TabIndex = 3;
             // 
-            // playerOneSlot4
+            // panelP1ActiveSlot3
             // 
-            playerOneSlot4.BackColor = Color.White;
-            playerOneSlot4.Controls.Add(pictureBox8);
-            playerOneSlot4.Location = new Point(1045, 430);
-            playerOneSlot4.Name = "playerOneSlot4";
-            playerOneSlot4.Size = new Size(170, 200);
-            playerOneSlot4.TabIndex = 2;
+            panelP1ActiveSlot3.BackColor = Color.Cyan;
+            panelP1ActiveSlot3.Location = new Point(585, 16);
+            panelP1ActiveSlot3.Name = "panelP1ActiveSlot3";
+            panelP1ActiveSlot3.Size = new Size(115, 150);
+            panelP1ActiveSlot3.TabIndex = 3;
             // 
-            // pictureBox8
+            // panelP1ActiveSlot1
             // 
-            pictureBox8.Dock = DockStyle.Fill;
-            pictureBox8.Location = new Point(0, 0);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(170, 200);
-            pictureBox8.TabIndex = 0;
-            pictureBox8.TabStop = false;
+            panelP1ActiveSlot1.BackColor = Color.Cyan;
+            panelP1ActiveSlot1.Location = new Point(276, 16);
+            panelP1ActiveSlot1.Name = "panelP1ActiveSlot1";
+            panelP1ActiveSlot1.Size = new Size(115, 150);
+            panelP1ActiveSlot1.TabIndex = 2;
             // 
-            // playerOneSlot3
+            // labelP2Mana
             // 
-            playerOneSlot3.BackColor = Color.White;
-            playerOneSlot3.Controls.Add(pictureBox7);
-            playerOneSlot3.Location = new Point(759, 430);
-            playerOneSlot3.Name = "playerOneSlot3";
-            playerOneSlot3.Size = new Size(170, 200);
-            playerOneSlot3.TabIndex = 2;
+            labelP2Mana.BackColor = Color.FromArgb(115, 223, 244);
+            labelP2Mana.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelP2Mana.Location = new Point(39, 33);
+            labelP2Mana.Name = "labelP2Mana";
+            labelP2Mana.Size = new Size(27, 33);
+            labelP2Mana.TabIndex = 0;
+            labelP2Mana.Text = "5";
             // 
-            // pictureBox7
+            // panelP2Mana
             // 
-            pictureBox7.Dock = DockStyle.Fill;
-            pictureBox7.Location = new Point(0, 0);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(170, 200);
-            pictureBox7.TabIndex = 0;
-            pictureBox7.TabStop = false;
+            panelP2Mana.BackgroundImage = (Image)resources.GetObject("panelP2Mana.BackgroundImage");
+            panelP2Mana.Controls.Add(labelP2Mana);
+            panelP2Mana.Location = new Point(1790, 200);
+            panelP2Mana.Name = "panelP2Mana";
+            panelP2Mana.Size = new Size(100, 100);
+            panelP2Mana.TabIndex = 14;
             // 
-            // playerOneSlot2
+            // labelP2Health
             // 
-            playerOneSlot2.BackColor = Color.White;
-            playerOneSlot2.Controls.Add(pictureBox6);
-            playerOneSlot2.Location = new Point(490, 430);
-            playerOneSlot2.Name = "playerOneSlot2";
-            playerOneSlot2.Size = new Size(170, 200);
-            playerOneSlot2.TabIndex = 1;
+            labelP2Health.BackColor = Color.FromArgb(210, 40, 40);
+            labelP2Health.Font = new Font("Lucida Console", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelP2Health.Location = new Point(26, 33);
+            labelP2Health.Name = "labelP2Health";
+            labelP2Health.Size = new Size(49, 31);
+            labelP2Health.TabIndex = 7;
+            labelP2Health.Text = "10";
+            labelP2Health.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox6
+            // panelP2Health
             // 
-            pictureBox6.Dock = DockStyle.Fill;
-            pictureBox6.Location = new Point(0, 0);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(170, 200);
-            pictureBox6.TabIndex = 0;
-            pictureBox6.TabStop = false;
+            panelP2Health.BackgroundImage = (Image)resources.GetObject("panelP2Health.BackgroundImage");
+            panelP2Health.Controls.Add(labelP2Health);
+            panelP2Health.Location = new Point(1671, 200);
+            panelP2Health.Name = "panelP2Health";
+            panelP2Health.Size = new Size(100, 100);
+            panelP2Health.TabIndex = 13;
             // 
-            // playerOneSlot1
+            // panelP1Hand
             // 
-            playerOneSlot1.BackColor = Color.White;
-            playerOneSlot1.Controls.Add(label3);
-            playerOneSlot1.Controls.Add(label2);
-            playerOneSlot1.Controls.Add(label1);
-            playerOneSlot1.Controls.Add(pictureBox1);
-            playerOneSlot1.Location = new Point(219, 430);
-            playerOneSlot1.Name = "playerOneSlot1";
-            playerOneSlot1.Size = new Size(170, 200);
-            playerOneSlot1.TabIndex = 0;
+            panelP1Hand.Controls.Add(panelP1HandSlot5);
+            panelP1Hand.Controls.Add(panelP1HandSlot4);
+            panelP1Hand.Controls.Add(panelP1HandSlot3);
+            panelP1Hand.Controls.Add(panelP1HandSlot2);
+            panelP1Hand.Controls.Add(panelP1HandSlot1);
+            panelP1Hand.Location = new Point(478, 780);
+            panelP1Hand.Name = "panelP1Hand";
+            panelP1Hand.Size = new Size(1000, 177);
+            panelP1Hand.TabIndex = 15;
             // 
-            // label3
+            // panelP1HandSlot5
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(134, 166);
-            label3.Name = "label3";
-            label3.Size = new Size(13, 15);
-            label3.TabIndex = 3;
-            label3.Text = "4";
+            panelP1HandSlot5.BackColor = Color.White;
+            panelP1HandSlot5.Location = new Point(740, 13);
+            panelP1HandSlot5.Name = "panelP1HandSlot5";
+            panelP1HandSlot5.Size = new Size(115, 150);
+            panelP1HandSlot5.TabIndex = 1;
             // 
-            // label2
+            // panelP1HandSlot4
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(20, 166);
-            label2.Name = "label2";
-            label2.Size = new Size(19, 15);
-            label2.TabIndex = 2;
-            label2.Text = "10";
+            panelP1HandSlot4.BackColor = Color.White;
+            panelP1HandSlot4.Location = new Point(593, 13);
+            panelP1HandSlot4.Name = "panelP1HandSlot4";
+            panelP1HandSlot4.Size = new Size(115, 150);
+            panelP1HandSlot4.TabIndex = 1;
             // 
-            // label1
+            // panelP1HandSlot3
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(134, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(13, 15);
-            label1.TabIndex = 1;
-            label1.Text = "5";
-            label1.Click += label1_Click_1;
+            panelP1HandSlot3.BackColor = Color.White;
+            panelP1HandSlot3.Location = new Point(449, 13);
+            panelP1HandSlot3.Name = "panelP1HandSlot3";
+            panelP1HandSlot3.Size = new Size(115, 150);
+            panelP1HandSlot3.TabIndex = 1;
             // 
-            // pictureBox1
+            // panelP1HandSlot2
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(170, 200);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            panelP1HandSlot2.BackColor = Color.White;
+            panelP1HandSlot2.Location = new Point(306, 13);
+            panelP1HandSlot2.Name = "panelP1HandSlot2";
+            panelP1HandSlot2.Size = new Size(115, 150);
+            panelP1HandSlot2.TabIndex = 1;
+            // 
+            // panelP1HandSlot1
+            // 
+            panelP1HandSlot1.BackColor = Color.White;
+            panelP1HandSlot1.Location = new Point(163, 13);
+            panelP1HandSlot1.Name = "panelP1HandSlot1";
+            panelP1HandSlot1.Size = new Size(115, 150);
+            panelP1HandSlot1.TabIndex = 0;
+            // 
+            // panelP2Hand
+            // 
+            panelP2Hand.Controls.Add(panelP2HandSlot5);
+            panelP2Hand.Controls.Add(panelP2HandSlot4);
+            panelP2Hand.Controls.Add(panelP2HandSlot3);
+            panelP2Hand.Controls.Add(panelP2HandSlot2);
+            panelP2Hand.Controls.Add(panelP2HandSlot1);
+            panelP2Hand.Location = new Point(478, 17);
+            panelP2Hand.Name = "panelP2Hand";
+            panelP2Hand.Size = new Size(1000, 177);
+            panelP2Hand.TabIndex = 16;
+            // 
+            // panelP2HandSlot5
+            // 
+            panelP2HandSlot5.BackColor = Color.White;
+            panelP2HandSlot5.Location = new Point(740, 13);
+            panelP2HandSlot5.Name = "panelP2HandSlot5";
+            panelP2HandSlot5.Size = new Size(115, 150);
+            panelP2HandSlot5.TabIndex = 1;
+            // 
+            // panelP2HandSlot4
+            // 
+            panelP2HandSlot4.BackColor = Color.White;
+            panelP2HandSlot4.Location = new Point(593, 13);
+            panelP2HandSlot4.Name = "panelP2HandSlot4";
+            panelP2HandSlot4.Size = new Size(115, 150);
+            panelP2HandSlot4.TabIndex = 1;
+            // 
+            // panelP2HandSlot3
+            // 
+            panelP2HandSlot3.BackColor = Color.White;
+            panelP2HandSlot3.Location = new Point(449, 13);
+            panelP2HandSlot3.Name = "panelP2HandSlot3";
+            panelP2HandSlot3.Size = new Size(115, 150);
+            panelP2HandSlot3.TabIndex = 1;
+            // 
+            // panelP2HandSlot2
+            // 
+            panelP2HandSlot2.BackColor = Color.White;
+            panelP2HandSlot2.Location = new Point(306, 13);
+            panelP2HandSlot2.Name = "panelP2HandSlot2";
+            panelP2HandSlot2.Size = new Size(115, 150);
+            panelP2HandSlot2.TabIndex = 1;
+            // 
+            // panelP2HandSlot1
+            // 
+            panelP2HandSlot1.BackColor = Color.White;
+            panelP2HandSlot1.Location = new Point(163, 13);
+            panelP2HandSlot1.Name = "panelP2HandSlot1";
+            panelP2HandSlot1.Size = new Size(115, 150);
+            panelP2HandSlot1.TabIndex = 0;
+            // 
+            // buttonP1EndTurn
+            // 
+            buttonP1EndTurn.Location = new Point(67, 484);
+            buttonP1EndTurn.Name = "buttonP1EndTurn";
+            buttonP1EndTurn.Size = new Size(127, 68);
+            buttonP1EndTurn.TabIndex = 17;
+            buttonP1EndTurn.Text = "End Turn";
+            buttonP1EndTurn.UseVisualStyleBackColor = true;
+            buttonP1EndTurn.Click += buttonP1EndTurn_Click;
+            // 
+            // timerTurn
+            // 
+            timerTurn.Interval = 1000;
+            timerTurn.Tick += timerTurn_Tick;
+            // 
+            // buttonP2EndTurn
+            // 
+            buttonP2EndTurn.Location = new Point(1723, 497);
+            buttonP2EndTurn.Name = "buttonP2EndTurn";
+            buttonP2EndTurn.Size = new Size(129, 68);
+            buttonP2EndTurn.TabIndex = 18;
+            buttonP2EndTurn.Text = "End Turn";
+            buttonP2EndTurn.UseVisualStyleBackColor = true;
+            buttonP2EndTurn.Click += buttonP2EndTurn_Click;
             // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Highlight;
+            Controls.Add(buttonP2EndTurn);
+            Controls.Add(buttonP1EndTurn);
+            Controls.Add(panelP2Hand);
+            Controls.Add(panelP1Hand);
+            Controls.Add(panelP2Mana);
+            Controls.Add(panelP2Health);
+            Controls.Add(panelP1Mana);
+            Controls.Add(panelP1Health);
+            Controls.Add(labelPlayerTwoTeam);
+            Controls.Add(labelPlayerTwoName);
+            Controls.Add(labelPlayerOneTeam);
+            Controls.Add(labelPlayerOneName);
             Controls.Add(gameBoardPanel);
-            Controls.Add(startScreenButton);
             Name = "GameScreen";
             Size = new Size(1920, 1080);
+            panelP1Health.ResumeLayout(false);
+            panelP1Mana.ResumeLayout(false);
             gameBoardPanel.ResumeLayout(false);
-            playerTwoSlot4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            playerTwoSlot3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            playerTwoSlot2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            playerTwoSlot1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            playerOneSlot4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
-            playerOneSlot3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            playerOneSlot2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            playerOneSlot1.ResumeLayout(false);
-            playerOneSlot1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panelP2Mana.ResumeLayout(false);
+            panelP2Health.ResumeLayout(false);
+            panelP1Hand.ResumeLayout(false);
+            panelP2Hand.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button startScreenButton;
+        private Label labelPlayerOneName;
+        private Label labelPlayerOneTeam;
+        private Label labelPlayerTwoName;
+        private Label labelPlayerTwoTeam;
+        private Label labelP1Health;
+        private Panel panelP1Health;
+        private Panel panelP1Mana;
+        private Label labelP1Mana;
         private Panel gameBoardPanel;
-        private Panel playerOneSlot1;
-        private Label label1;
-        private PictureBox pictureBox1;
-        private Label label3;
-        private Label label2;
-        private Panel playerTwoSlot4;
-        private PictureBox pictureBox5;
-        private Panel playerTwoSlot3;
-        private PictureBox pictureBox4;
-        private Panel playerTwoSlot2;
-        private PictureBox pictureBox3;
-        private Panel playerTwoSlot1;
-        private PictureBox pictureBox2;
-        private Panel playerOneSlot4;
-        private PictureBox pictureBox8;
-        private Panel playerOneSlot3;
-        private PictureBox pictureBox7;
-        private Panel playerOneSlot2;
-        private PictureBox pictureBox6;
+        private Label labelP2Mana;
+        private Panel panelP2Mana;
+        private Label labelP2Health;
+        private Panel panelP2Health;
+        private Panel panel2;
+        private Panel panel1;
+        private Panel panelP2ActiveSlot1;
+        private Panel panelP2ActiveSlot2;
+        private Panel panelP2ActiveSlot3;
+        private Panel panelP1ActiveSlot2;
+        private Panel panelP1ActiveSlot3;
+        private Panel panelP1ActiveSlot1;
+        private Panel panelP1Hand;
+        private Panel panelP1HandSlot5;
+        private Panel panelP1HandSlot4;
+        private Panel panelP1HandSlot3;
+        private Panel panelP1HandSlot2;
+        private Panel panelP1HandSlot1;
+        private Panel panelP2Hand;
+        private Panel panelP2HandSlot5;
+        private Panel panelP2HandSlot4;
+        private Panel panelP2HandSlot3;
+        private Panel panelP2HandSlot2;
+        private Panel panelP2HandSlot1;
+        private Button buttonP1EndTurn;
+        private System.Windows.Forms.Timer timerTurn;
+        private Button buttonP2EndTurn;
+        private Label labelTurnTimer;
+        private Label labelPlayersTurn;
     }
 }
