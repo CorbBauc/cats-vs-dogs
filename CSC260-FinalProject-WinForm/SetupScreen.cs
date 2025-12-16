@@ -34,13 +34,15 @@ namespace CSC260_FinalProject_WinForm
         {
             if(_player1.Team == "Dog")
             {
+
+                //Card Name, Health, Damage, Mana Cost
                 _player1.Hand = new List<Card>
                 {
                     new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog)
+                    new DogCard("Cheap Dog", 4, 1, 1, Properties.Resources.TankDog),
+                    new DogCard("Attack Dog", 5, 7, 3, Properties.Resources.TankDog),
+                    new DogCard("OP Dog", 10, 10, 10, Properties.Resources.TankDog),
+                    new DogCard("Average Dog", 5, 5, 5, Properties.Resources.TankDog)
                 };
                 _player2.Hand = new List<Card>
                 {
@@ -65,10 +67,10 @@ namespace CSC260_FinalProject_WinForm
                 {
                     //Change to CatCard after creating that class
                     new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog),
-                    new DogCard("Tank Dog", 10, 2, 3, Properties.Resources.TankDog)
+                    new DogCard("Cheap Dog", 4, 1, 1, Properties.Resources.TankDog),
+                    new DogCard("Attack Dog", 5, 7, 3, Properties.Resources.TankDog),
+                    new DogCard("OP Dog", 10, 10, 10, Properties.Resources.TankDog),
+                    new DogCard("Average Dog", 5, 5, 5, Properties.Resources.TankDog)
                 };
             }
         }
