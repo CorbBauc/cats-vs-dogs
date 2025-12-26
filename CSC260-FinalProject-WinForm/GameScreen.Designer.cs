@@ -1,4 +1,4 @@
-﻿namespace CSC260_FinalProject_WinForm
+﻿namespace CatsVsDogs
 {
     partial class GameScreen
     {

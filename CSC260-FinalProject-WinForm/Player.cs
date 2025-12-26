@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSC260_FinalProject_WinForm
+namespace CatsVsDogs
 {
     public class Player
     {

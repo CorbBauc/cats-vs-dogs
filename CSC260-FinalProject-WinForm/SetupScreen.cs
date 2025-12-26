@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace CSC260_FinalProject_WinForm
+namespace CatsVsDogs
 {
     public partial class SetupScreen : UserControl
     {

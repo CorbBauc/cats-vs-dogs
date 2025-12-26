@@ -1,4 +1,4 @@
-namespace CSC260_FinalProject_WinForm
+namespace CatsVsDogs
 {
     public partial class MainForm : Form
     {

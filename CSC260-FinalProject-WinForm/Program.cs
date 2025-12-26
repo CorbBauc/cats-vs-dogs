@@ -1,5 +1,5 @@
-namespace CSC260_FinalProject_WinForm
-{
+namespace CatsVsDogs
+{ 
     internal static class Program
     {
         /// <summary>

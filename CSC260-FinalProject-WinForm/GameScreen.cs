@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CSC260_FinalProject_WinForm
+namespace CatsVsDogs
 {
     public partial class GameScreen : UserControl
     {
